@@ -5,60 +5,54 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { setAuthedUser } from '../actions/authedUser';
 
-const Login = () => {
+const Login = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [user, setUser] = useState('none');
-    // const { userIds } = this.props;
-    // console.log(userIds);
+    const [user, setUser] = useState('');
+    const { users, userIds } = props;
 
-
-    const changeUser = e => {
+    const changeUser = (e) => {
         const user = e.target.value;
         setUser(user);
     };
 
-    const handleLogin = e => {
+    const handleLogin = (e) => {
         e.preventDefault();
         dispatch(setAuthedUser(user));
         navigate('/');
-
-    }
+    };
 
     return (
         <div>
-            <h1>Welcome to Would-you-rather app!</h1>
+            <h1>Welcome to the Would-you-rather app!</h1>
 
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3">
                     <Form.Label htmlFor="login">Login to continue</Form.Label>
-                    <Form.Select
-                        size="lg"
-                        id="login"
-                        onChange={changeUser}
-                        value={user}
-                    >
-                        <option key='none' value='none' disabled>
+                    <Form.Select size="lg" id="login" onChange={changeUser} value={user}>
+                        <option key="initialText" value="" disabled>
                             Choose user
                         </option>
-                        <option>blabla</option>
-                        {/* {this.props.userIds.map(userId => (
+                        <option>Oliwia</option>
+                        {userIds.map((userId) => (
                             <option key={userId} value={userId}>
-                                {this.props.users[userId].name}
+                                {users[userId].name}
                             </option>
-                        ))} */}
+                        ))}
                     </Form.Select>
                 </Form.Group>
-                <Button type="submit" disabled={user === 'none'}>Login</Button>
+                <Button type="submit" disabled={user === ''}>
+                    Login
+                </Button>
             </Form>
         </div>
-    )
-}
+    );
+};
 
 function mapStateToProps({ users }) {
     return {
         userIds: Object.keys(users),
-        users
+        users,
     };
 }
 

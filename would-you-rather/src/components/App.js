@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { useDispatch } from 'react-redux';
 
 import { handleInitialData } from '../actions/shared';
 import Login from "./Login";
@@ -17,35 +16,27 @@ import { NewQuestion } from "./NewQuestion";
 import { Logout } from "./Logout";
 import { NotFound } from "./NotFound";
 
-const App = () => {
-  const dispatch = useDispatch();
+const App = () => (
+  <Router>
+    <React.Fragment>
+      <Header />
 
-  useEffect(() => {
-    dispatch(handleInitialData());
-  })
-
-  return (
-    <Router>
-      <React.Fragment>
-        <Header />
-
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route exact path="/" element={<Questions />} />
-          <Route
-            exact
-            path="/questions/:question_id"
-            element={<Question />}
-          />
-          <Route exact path="/leaderboard" element={<Leaderboard />} />
-          <Route exact path="/newquestion" element={<NewQuestion />} />
-          <Route exact path="/logout" element={<Logout />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </React.Fragment>
-    </Router>
-  );
-}
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route exact path="/" element={<Questions />} />
+        <Route
+          exact
+          path="/questions/:question_id"
+          element={<Question />}
+        />
+        <Route exact path="/leaderboard" element={<Leaderboard />} />
+        <Route exact path="/newquestion" element={<NewQuestion />} />
+        <Route exact path="/logout" element={<Logout />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </React.Fragment>
+  </Router>
+);
 
 function mapStateToProps({ authedUser }) {
   return {
@@ -53,4 +44,7 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps,
+  { handleInitialData }
+)(App);
