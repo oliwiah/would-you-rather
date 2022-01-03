@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
+import { handleInitialData } from '../actions/shared';
 import Login from "./Login";
 import { Header } from "./Header";
 import { Question } from "./Question";
@@ -16,6 +18,11 @@ import { Logout } from "./Logout";
 import { NotFound } from "./NotFound";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleInitialData());
+  })
 
   return (
     <Router>
