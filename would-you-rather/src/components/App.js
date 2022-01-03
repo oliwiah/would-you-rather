@@ -4,7 +4,9 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { Login } from "./Login";
+import { connect } from 'react-redux';
+
+import Login from "./Login";
 import { Header } from "./Header";
 import { Question } from "./Question";
 import { Questions } from './Questions';
@@ -38,4 +40,10 @@ const App = () => {
   );
 }
 
-export default App;
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  };
+}
+
+export default connect(mapStateToProps)(App);
