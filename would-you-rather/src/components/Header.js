@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 
 export const Header = ({ authedUser, users }) => (
-    <Nav fill variant="tabs" defaultActiveKey="/home">
+    <Nav fill variant="tabs">
         <Nav.Item>
             <Nav.Link href="/">Home</Nav.Link>
         </Nav.Item>
