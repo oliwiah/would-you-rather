@@ -1,0 +1,17 @@
+.card-group > .card {
+    padding: 10px 40px;
+}
+
+.user-card {
+    display: flex;
+}
+
+.user-card > img {
+    border: 2px solid grey;
+    margin-right: 25px;
+}
+
+.card-title {
+    font-weight: 700;
+    padding-bottom: 15px;
+}
