@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { connect } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 
@@ -27,9 +27,9 @@ export const Header = ({ authedUser, users }) => (
 
 function mapStateToProps({ authedUser, users }) {
     return {
-      authedUser,
-      users
+        authedUser,
+        users,
     };
-  }
+}
 
-  export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Header);
