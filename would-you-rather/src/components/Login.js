@@ -34,6 +34,7 @@ const Login = (props) => {
                             Choose user
                         </option>
                         <option>Oliwia</option>
+                        <option>tylermcginnis</option>
                         {userIds.map((userId) => (
                             <option key={userId} value={userId}>
                                 {users[userId].name}

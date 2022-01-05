@@ -14,8 +14,21 @@
 .user-card > img {
     border: 2px solid grey;
     margin-right: 25px;
+    width: 200px;
+    height: 200px;
+    align-self: center;
 }
 
 .card-body {
     text-align: left;
+}
+
+.result-option{
+    display: flex;
+    justify-content: space-between;
+}
+
+.badge {
+    font-size: 16px;
+    margin-bottom: 7px;
 }

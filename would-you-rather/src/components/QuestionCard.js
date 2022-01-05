@@ -16,7 +16,7 @@ export const QuestionCard = (props) => {
     const name = 'ali';
     const avatar = 'https://randomuser.me/api/portraits/women/3.jpg';
     const text = 'sdfg';
-    const id = 'tylermcginnisID';
+    const id = 'xj352vofupe1dqz9emx13r';
     const viewQuestion = () => {
         navigate(`/questions/${id}`);
     };
@@ -27,12 +27,11 @@ export const QuestionCard = (props) => {
     }
 
     return (
-        <>
         <CardGroup>
             <Card>
                 <Card.Title>{name} asks:</Card.Title>
                 <div className="user-card">
-                    <Image variant="top" roundedCircle="true" fluid="true" src={avatar} />
+                    <Image variant="top" roundedCircle="true" src={avatar} />
                     <Card.Body>
                         <Card.Text>
                             <h4>Would you rather...</h4>
@@ -43,7 +42,6 @@ export const QuestionCard = (props) => {
                 </div>
             </Card>
         </CardGroup>
-        </>
     );
 };
 
