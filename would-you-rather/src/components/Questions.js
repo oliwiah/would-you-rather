@@ -24,8 +24,6 @@ const Questions = (props) => {
 
             {activeTab === 'unanswered' ? (
                 <div>
-                    <p>unanswered</p>
-
                     {orderedQuestions
                         .filter(
                             (question) =>
@@ -42,8 +40,6 @@ const Questions = (props) => {
                 </div>
             ) : (
                 <div>
-                    <p>answered</p>
-
                     {orderedQuestions
                         .filter(
                             (question) =>
