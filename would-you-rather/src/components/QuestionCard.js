@@ -36,37 +36,7 @@ export const QuestionCard = (props) => {
                             <h4>Would you rather...</h4>
                             ...{text}
                         </Card.Text>
-                        <Button variant="outline-primary">View pool</Button>{' '}
-                    </Card.Body>
-                </div>
-            </Card>
-        </CardGroup>
-        <CardGroup>
-            <Card>
-                <Card.Title>{name} asks:</Card.Title>
-                <div className="user-card">
-                    <Image variant="top" roundedCircle="true" fluid="true" src={avatar} />
-                    <Card.Body>
-                        <Card.Text>
-                            <h4>Would you rather...</h4>
-                            ...{text}
-                        </Card.Text>
-                        <Button variant="outline-primary">View pool</Button>{' '}
-                    </Card.Body>
-                </div>
-            </Card>
-        </CardGroup>
-        <CardGroup>
-            <Card>
-                <Card.Title>{name} asks:</Card.Title>
-                <div className="user-card">
-                    <Image variant="top" roundedCircle="true" fluid="true" src={avatar} />
-                    <Card.Body>
-                        <Card.Text>
-                            <h4>Would you rather...</h4>
-                            ...{text}
-                        </Card.Text>
-                        <Button variant="outline-primary">View pool</Button>{' '}
+                        <Button variant="outline-primary" onClick={viewQuestion}>View pool</Button>{' '}
                     </Card.Body>
                 </div>
             </Card>

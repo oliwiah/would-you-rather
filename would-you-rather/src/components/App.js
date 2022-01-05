@@ -6,7 +6,7 @@ import { handleInitialData } from '../actions/shared';
 import Login from './Login';
 import { Header } from './Header';
 import Questions from './Questions';
-import { QuestionCard } from './QuestionCard';
+import { Question } from './Question';
 import { Leaderboard } from './Leaderboard';
 import { NewQuestion } from './NewQuestion';
 import { Logout } from './Logout';
@@ -20,7 +20,7 @@ const App = () => (
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route exact path="/" element={<Questions />} />
-                <Route exact path="/questions/:question_id" element={<QuestionCard />} />
+                <Route exact path="/questions/:question_id" element={<Question />} />
                 <Route exact path="/leaderboard" element={<Leaderboard />} />
                 <Route exact path="/newquestion" element={<NewQuestion />} />
                 <Route exact path="/logout" element={<Logout />} />
