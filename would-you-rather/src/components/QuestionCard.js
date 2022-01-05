@@ -8,17 +8,19 @@ import '../styles/questionCard.css';
 export const QuestionCard = (props) => {
     const navigate = useNavigate();
     // const { name, avatar, text, id } = props;
+    // const viewQuestion = (id) => {
+    //     navigate(`/questions/${id}`);
+    // };
 
     //temp
     const name = 'ali';
     const avatar = 'https://randomuser.me/api/portraits/women/3.jpg';
     const text = 'sdfg';
-    const id = 'tylermcginnis';
-    //e.o. temp
-
-    const viewQuestion = (id) => {
+    const id = 'tylermcginnisID';
+    const viewQuestion = () => {
         navigate(`/questions/${id}`);
     };
+    //e.o. temp
 
     if (props === null) {
         return <p>This question does not exist.</p>;
