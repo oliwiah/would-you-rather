@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { useNavigate, Navigate } from 'react-router-dom';
 
@@ -12,13 +12,18 @@ export const Question = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // temp - TODO: get this from store
-    const question_id = 'xj352vofupe1dqz9emx13r';
-    const questions = tempQuestions;
+    useEffect(() => {
+        dispatch(handleAnswerQuestion());
+    }, [dispatch]);
 
-    // const { authedUser, questions, users } = props;
-    const question = questions[question_id];
-    const authedUser = 'tylermcginnis';
+    // // temp - TODO: get this from store
+    // const question_id = 'xj352vofupe1dqz9emx13r';
+    // const questions = tempQuestions;
+    // const authedUser = 'tylermcginnis';
+
+    const { authedUser, questions, users } = props;
+    console.log('props ===>', props);
+    const question = questions[props.match.params.question_id];
 
     const handleSelection = (option) => {
         setOption(option);
@@ -28,8 +33,8 @@ export const Question = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setSubmit(true);
-        dispatch(handleAnswerQuestion(question_id, option));
-        navigate(`/questions/${question_id}`);
+        dispatch(handleAnswerQuestion(props.match.params.question_id, option));
+        navigate(`/questions/${props.match.params.question_id}`);
     };
 
     const getPercent = (numberVotes, totalVotes) => {
@@ -240,3 +245,13 @@ const users = {
     },
 };
 // e.o. temporary
+
+function mapStateToProps({ questions, users, authedUser }) {
+    return {
+        authedUser,
+        questions,
+        users,
+    };
+}
+
+export default connect(mapStateToProps)(Question);
