@@ -44,4 +44,4 @@ function mapStateToProps({ authedUser }) {
     };
 }
 
-export default connect(mapStateToProps, { handleInitialData })(App);
+export default connect(mapStateToProps)(App);
