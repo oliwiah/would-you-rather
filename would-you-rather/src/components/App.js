@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 
 import { handleInitialData } from '../actions/shared';
@@ -34,14 +34,8 @@ const App = () => {
                             <Login />
                         ) : (
                             <Routes>
-                                {/* To remove login route */}
-                                <Route path="/login" element={<Login />} />
                                 <Route exact path="/" element={<Questions />} />
-                                <Route
-                                    exact
-                                    path="/questions/:question_id"
-                                    element={<Question />}
-                                />
+                                <Route exact path="/questions/:id" element={<Question />} />
                                 <Route exact path="/leaderboard" element={<Leaderboard />} />
                                 <Route exact path="/newquestion" element={<NewQuestion />} />
                                 <Route exact path="/logout" element={<Logout />} />
@@ -55,10 +49,11 @@ const App = () => {
     );
 };
 
-function mapStateToProps({ authedUser }) {
-    return {
-        authedUser,
-    };
-}
+// function mapStateToProps({ authedUser }) {
+//     return {
+//         authedUser,
+//     };
+// }
 
-export default connect(mapStateToProps)(App);
+// export default connect(mapStateToProps)(App);
+export default App;
