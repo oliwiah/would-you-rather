@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 
-import QuestionCard from './QuestionCard';
+import QuestionDetails from './QuestionDetails';
 import '../styles/questions.css';
 
 const Questions = (props) => {
@@ -49,7 +49,7 @@ const Questions = (props) => {
                         .map((question) => {
                             return (
                                 <div className="box" key={question.id}>
-                                    <QuestionCard id={question.id} />
+                                    <QuestionDetails id={question.id} />
                                 </div>
                             );
                         })}
@@ -65,7 +65,7 @@ const Questions = (props) => {
                         .map((question) => {
                             return (
                                 <div className="box" key={question.id}>
-                                    <QuestionCard id={question.id} />
+                                    <QuestionDetails id={question.id} />
                                 </div>
                             );
                         })}
