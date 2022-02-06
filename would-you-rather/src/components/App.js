@@ -34,11 +34,11 @@ const App = () => {
                             <Login />
                         ) : (
                             <Routes>
-                                <Route exact path="/" element={<Questions />} />
-                                <Route exact path="/questions/:id" element={<Question />} />
-                                <Route exact path="/leaderboard" element={<Leaderboard />} />
-                                <Route exact path="/newquestion" element={<NewQuestion />} />
-                                <Route exact path="/logout" element={<Logout />} />
+                                <Route path="/" exact element={<Questions />} />
+                                <Route path="/questions/:id" element={<Question />} />
+                                <Route path="/leaderboard" element={<Leaderboard />} />
+                                <Route path="/newquestion" element={<NewQuestion />} />
+                                <Route path="/logout" element={<Logout />} />
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                         )}
@@ -49,11 +49,4 @@ const App = () => {
     );
 };
 
-// function mapStateToProps({ authedUser }) {
-//     return {
-//         authedUser,
-//     };
-// }
-
-// export default connect(mapStateToProps)(App);
 export default App;
