@@ -4,13 +4,12 @@ import { Card, CardGroup, Image, ProgressBar, Badge } from 'react-bootstrap';
 
 
 const QuestionResult = props => {
+    console.log('PROPS =========> ', props);
     const authedUser = useSelector(state => state.authedUser);
     const users = useSelector(state => state.users);
+    const question = useSelector(state => state.questions[props.id])
     const questions = useSelector(state => state.questions);
-
-    const totalVoteNum = questions[props.id].optionOne.votes.length + questions[props.id].optionTwo.votes.length;
-    const questionOneVotePercent = getPercent(questions[props.id].optionOne.votes.length, totalVoteNum);
-    const questionTwoVotePercent = getPercent(questions[props.id].optionTwo.votes.length, totalVoteNum);
+    const { author, optionOne, optionTwo } = question
 
     const getPercent = (numberVotes, totalVotes) => {
         let percent = 0;
@@ -20,15 +19,20 @@ const QuestionResult = props => {
         return percent;
     };
 
+    const totalVoteNum = optionOne.votes.length + optionTwo.votes.length;
+    const questionOneVotePercent = getPercent(optionOne.votes.length, totalVoteNum);
+    const questionTwoVotePercent = getPercent(optionTwo.votes.length, totalVoteNum);
+
+
     return (
         <CardGroup>
             <Card>
-                <Card.Title>{users[questions[props.id].author].name} asks:</Card.Title>
+                <Card.Title>{users[author].name} asks:</Card.Title>
                 <div className="user-card">
                     <Image
                         variant="top"
                         roundedCircle="true"
-                        src={users[questions[props.id].author].avatarURL}
+                        src={users[author].avatarURL}
                     />
                     <Card.Body>
                         <Card.Text>
@@ -37,8 +41,8 @@ const QuestionResult = props => {
                             <hr />
 
                             <div className="result-option">
-                                <h4>{questions[props.id].optionOne.text}</h4>
-                                {questions[props.id].optionOne.votes.indexOf(authedUser) !== -1 ? (
+                                <h4>{optionOne.text}</h4>
+                                {optionOne.votes.indexOf(authedUser) !== -1 ? (
                                     <Badge bg="secondary">Your choice</Badge>
                                 ) : (
                                     false
@@ -51,15 +55,15 @@ const QuestionResult = props => {
                                 label={`${questionOneVotePercent}%`}
                             />
                             <h6>
-                                {questions[props.id].optionOne.votes.length} out of {totalVoteNum}{' '}
+                                {optionOne.votes.length} out of {totalVoteNum}{' '}
                                 {totalVoteNum > 1 ? 'votes' : 'vote'}
                             </h6>
 
                             <br />
 
                             <div className="result-option">
-                                <h4>{questions[props.id].optionTwo.text}</h4>
-                                {questions[props.id].optionTwo.votes.indexOf(authedUser) !== -1 ? (
+                                <h4>{optionTwo.text}</h4>
+                                {optionTwo.votes.indexOf(authedUser) !== -1 ? (
                                     <Badge bg="secondary">Your choice</Badge>
                                 ) : (
                                     false
@@ -72,7 +76,7 @@ const QuestionResult = props => {
                                 label={`${questionTwoVotePercent}%`}
                             />
                             <h6>
-                                {questions[props.id].optionTwo.votes.length} out of {totalVoteNum}{' '}
+                                {optionTwo.votes.length} out of {totalVoteNum}{' '}
                                 {totalVoteNum > 1 ? 'votes' : 'vote'}
                             </h6>
                         </Card.Text>

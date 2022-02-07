@@ -4,15 +4,19 @@ import { useNavigate } from 'react-router-dom';
 
 import { Card, CardGroup, Button, Image } from 'react-bootstrap';
 import { addQuestionAnswer } from '../actions/questions';
+import { handleAnswerQuestion } from '../actions/shared';
 import '../styles/questionCard.css';
 
 const QuestionDetails = props => {
+    // const [option, setOption] = useState('');
+    // const [submit, setSubmit] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const question = useSelector(state => state.questions[props.id])
     const users = useSelector(state => state.users)
     const authedUser = useSelector(state => state.authedUser)
     const [answer, setAnswer] = useState(null)
+    const { author, optionOne, optionTwo } = question;
 
     const avatar = users[question.author].avatarURL
 
@@ -24,14 +28,23 @@ const QuestionDetails = props => {
         event.preventDefault()
         const { id } = props
 
-        dispatch(addQuestionAnswer({
-            authedUser,
-            qid: id,
+        dispatch(handleAnswerQuestion({
+            id,
             answer
         }))
     }
 
-    const { author, optionOne, optionTwo } = question
+    // useEffect(() => {
+    //     dispatch(handleAnswerQuestion());
+    // }, [dispatch]);
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     setSubmit(true);
+    //     dispatch(handleAnswerQuestion(questions[props.id], option));
+    //     navigate(`/questions/${props.id}`);
+    // };
+
 
     const viewQuestion = () => {
         navigate(`/questions/${props.id}`);

@@ -9,7 +9,6 @@ const Questions = (props) => {
     const authedUser = useSelector((state) => state.authedUser);
     const questions = useSelector((state) => state.questions);
     const [activeTab, setActiveTab] = useState('unanswered');
-    // const { orderedQuestions } = props;
 
     const orderedQuestions = Object.values(questions).sort((a, b) => b.timestamp - a.timestamp);
 
@@ -41,11 +40,6 @@ const Questions = (props) => {
             {activeTab === 'unanswered' ? (
                 <div>
                     {unansweredQuestions
-                        // .filter(
-                        //     (question) =>
-                        //         question.optionOneAnswered !== true &&
-                        //         question.optionTwoAnswered !== true
-                        // )
                         .map((question) => {
                             return (
                                 <div className="box" key={question.id}>
@@ -57,11 +51,6 @@ const Questions = (props) => {
             ) : (
                 <div>
                     {answeredQuestions
-                        // .filter(
-                        //     (question) =>
-                        //         question.optionOneAnswered === true ||
-                        //         question.optionTwoAnswered === true
-                        // )
                         .map((question) => {
                             return (
                                 <div className="box" key={question.id}>
@@ -75,25 +64,4 @@ const Questions = (props) => {
     );
 };
 
-// function mapStateToProps({ questions, authedUser }) {
-//     return {
-//         orderedQuestions: Object.keys(questions)
-//             .map((question) => {
-//                 return {
-//                     ...questions[question],
-//                     optionOneAnswered:
-//                         questions[question].optionOne.votes.indexOf(authedUser) === -1
-//                             ? false
-//                             : true,
-//                     optionTwoAnswered:
-//                         questions[question].optionTwo.votes.indexOf(authedUser) === -1
-//                             ? false
-//                             : true,
-//                 };
-//             })
-//             .sort((a, b) => b.timestamp - a.timestamp),
-//     };
-// }
-
-// export default connect(mapStateToProps)(Questions);
 export default Questions;
