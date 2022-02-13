@@ -2,14 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Card, CardGroup, Image, ProgressBar, Badge } from 'react-bootstrap';
 
-
-const QuestionResult = props => {
-    console.log('PROPS =========> ', props);
-    const authedUser = useSelector(state => state.authedUser);
-    const users = useSelector(state => state.users);
-    const question = useSelector(state => state.questions[props.id])
-    const questions = useSelector(state => state.questions);
-    const { author, optionOne, optionTwo } = question
+const QuestionResult = (props) => {
+    const authedUser = useSelector((state) => state.authedUser);
+    const users = useSelector((state) => state.users);
+    const question = useSelector((state) => state.questions[props.id]);
+    const { author, optionOne, optionTwo } = question;
 
     const getPercent = (numberVotes, totalVotes) => {
         let percent = 0;
@@ -23,62 +20,54 @@ const QuestionResult = props => {
     const questionOneVotePercent = getPercent(optionOne.votes.length, totalVoteNum);
     const questionTwoVotePercent = getPercent(optionTwo.votes.length, totalVoteNum);
 
-
     return (
         <CardGroup>
             <Card>
-                <Card.Title>{users[author].name} asks:</Card.Title>
+                <Card.Title style={{ fontSize: '1.5em' }}>{users[author].name} asks:</Card.Title>
                 <div className="user-card">
-                    <Image
-                        variant="top"
-                        roundedCircle="true"
-                        src={users[author].avatarURL}
-                    />
+                    <Image variant="top" roundedCircle="true" src={users[author].avatarURL} />
                     <Card.Body>
-                        <Card.Text>
-                            <h3>Results</h3>
+                        <Card.Text style={{ fontSize: '1.5em' }}>Results</Card.Text>
+                        <hr />
 
-                            <hr />
+                        <div className="result-option">
+                            <Card.Text style={{ fontSize: '1em' }}>{optionOne.text}</Card.Text>
+                            {optionOne.votes.indexOf(authedUser) !== -1 ? (
+                                <Badge bg="secondary">Your choice</Badge>
+                            ) : (
+                                false
+                            )}
+                        </div>
+                        <ProgressBar
+                            striped
+                            variant="success"
+                            now={questionOneVotePercent}
+                            label={`${questionOneVotePercent}%`}
+                        />
+                        <Card.Text style={{ fontSize: '0.67em' }}>
+                            {optionOne.votes.length} out of {totalVoteNum}{' '}
+                            {totalVoteNum > 1 ? 'votes' : 'vote'}
+                        </Card.Text>
 
-                            <div className="result-option">
-                                <h4>{optionOne.text}</h4>
-                                {optionOne.votes.indexOf(authedUser) !== -1 ? (
-                                    <Badge bg="secondary">Your choice</Badge>
-                                ) : (
-                                    false
-                                )}
-                            </div>
-                            <ProgressBar
-                                striped
-                                variant="success"
-                                now={questionOneVotePercent}
-                                label={`${questionOneVotePercent}%`}
-                            />
-                            <h6>
-                                {optionOne.votes.length} out of {totalVoteNum}{' '}
-                                {totalVoteNum > 1 ? 'votes' : 'vote'}
-                            </h6>
+                        <br />
 
-                            <br />
-
-                            <div className="result-option">
-                                <h4>{optionTwo.text}</h4>
-                                {optionTwo.votes.indexOf(authedUser) !== -1 ? (
-                                    <Badge bg="secondary">Your choice</Badge>
-                                ) : (
-                                    false
-                                )}
-                            </div>
-                            <ProgressBar
-                                striped
-                                variant="success"
-                                now={questionTwoVotePercent}
-                                label={`${questionTwoVotePercent}%`}
-                            />
-                            <h6>
-                                {optionTwo.votes.length} out of {totalVoteNum}{' '}
-                                {totalVoteNum > 1 ? 'votes' : 'vote'}
-                            </h6>
+                        <div className="result-option">
+                            <Card.Text style={{ fontSize: '1em' }}>{optionTwo.text}</Card.Text>
+                            {optionTwo.votes.indexOf(authedUser) !== -1 ? (
+                                <Badge bg="secondary">Your choice</Badge>
+                            ) : (
+                                false
+                            )}
+                        </div>
+                        <ProgressBar
+                            striped
+                            variant="success"
+                            now={questionTwoVotePercent}
+                            label={`${questionTwoVotePercent}%`}
+                        />
+                        <Card.Text style={{ fontSize: '0.67em' }}>
+                            {optionTwo.votes.length} out of {totalVoteNum}{' '}
+                            {totalVoteNum > 1 ? 'votes' : 'vote'}
                         </Card.Text>
                     </Card.Body>
                 </div>

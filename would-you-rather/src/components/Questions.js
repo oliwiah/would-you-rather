@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 
 import QuestionDetails from './QuestionDetails';
+import QuestionResult from './QuestionResult';
 import '../styles/questions.css';
 
 const Questions = (props) => {
@@ -54,7 +55,7 @@ const Questions = (props) => {
                         .map((question) => {
                             return (
                                 <div className="box" key={question.id}>
-                                    <QuestionDetails id={question.id} />
+                                    <QuestionResult id={question.id} />
                                 </div>
                             );
                         })}

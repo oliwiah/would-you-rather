@@ -2,51 +2,37 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { Card, CardGroup, Button, Image } from 'react-bootstrap';
-import { addQuestionAnswer } from '../actions/questions';
-import { handleAnswerQuestion } from '../actions/shared';
+import { Card, CardGroup, Button, Image, Form } from 'react-bootstrap';
+import { handleUpdateQuestion } from '../actions/questions';
 import '../styles/questionCard.css';
 
-const QuestionDetails = props => {
-    // const [option, setOption] = useState('');
-    // const [submit, setSubmit] = useState(true);
+const QuestionDetails = (props) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch()
-    const question = useSelector(state => state.questions[props.id])
-    const users = useSelector(state => state.users)
-    const authedUser = useSelector(state => state.authedUser)
-    const [answer, setAnswer] = useState(null)
+    const dispatch = useDispatch();
+    const question = useSelector((state) => state.questions[props.id]);
+    const users = useSelector((state) => state.users);
+    const authedUser = useSelector((state) => state.authedUser);
+    const [answer, setAnswer] = useState(null);
     const { author, optionOne, optionTwo } = question;
 
-    const avatar = users[question.author].avatarURL
+    const avatar = users[question.author].avatarURL;
 
     const handleChange = (event) => {
-        setAnswer(event.target.value)
-    }
+        setAnswer(event.target.id);
+        console.log('handle change =====> ', answer);
+    };
 
     const handleSubmit = (event) => {
-        event.preventDefault()
-        const { id } = props
+        event.preventDefault();
+        const { id } = props;
 
-        dispatch(handleAnswerQuestion({
-            id,
-            answer
-        }))
-    }
-
-    // useEffect(() => {
-    //     dispatch(handleAnswerQuestion());
-    // }, [dispatch]);
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setSubmit(true);
-    //     dispatch(handleAnswerQuestion(questions[props.id], option));
-    //     navigate(`/questions/${props.id}`);
-    // };
-
-
-    const viewQuestion = () => {
+        dispatch(
+            handleUpdateQuestion({
+                authedUser,
+                qid: id,
+                answer,
+            })
+        );
         navigate(`/questions/${props.id}`);
     };
 
@@ -56,18 +42,30 @@ const QuestionDetails = props => {
     return (
         <CardGroup>
             <Card>
-                <Card.Title>{author} asks:</Card.Title>
+                <Card.Title style={{ fontSize: '1.5em' }}>{author} asks:</Card.Title>
                 <div className="user-card">
                     <Image variant="top" roundedCircle="true" src={avatar} />
                     <Card.Body>
-                        <Card.Text>
-                            <h4>Would you rather...</h4>
-                            {optionOne.text.substring(0, 20)} or
-                            {optionTwo.text.substring(0, 20)}
-                        </Card.Text>
-                        <Button variant="outline-primary" onClick={viewQuestion}>
-                            View pool
-                        </Button>{' '}
+                        <Card.Text style={{ fontSize: '1.5em' }}>Would you rather...</Card.Text>
+                        <Form>
+                            <Form.Check
+                                type="radio"
+                                label={optionOne.text}
+                                id='optionOne'
+                                checked={answer === 'optionOne'}
+                                onChange={handleChange}
+                            />
+                            <Form.Check
+                                type="radio"
+                                label={optionTwo.text}
+                                id='optionTwo'
+                                checked={answer === 'optionTwo'}
+                                onChange={handleChange}
+                            />
+                            <Button color="info" onClick={handleSubmit} disabled={answer === null}>
+                                Submit
+                            </Button>
+                        </Form>
                     </Card.Body>
                 </div>
             </Card>
