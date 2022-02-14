@@ -62,8 +62,9 @@ const QuestionDetails = (props) => {
                                 checked={answer === 'optionTwo'}
                                 onChange={handleChange}
                             />
+                            <br/>
                             <Button color="info" onClick={handleSubmit} disabled={answer === null}>
-                                Submit
+                                Vote
                             </Button>
                         </Form>
                     </Card.Body>
