@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Nav, Navbar, Container, NavbarBrand } from 'react-bootstrap';
 import { resetAuthedUser } from '../actions/authedUser';
 
@@ -14,17 +15,17 @@ export const Header = () => {
             <Container>
             <Navbar.Brand href="/">Would you rather...?</Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
             </Nav>
             <Nav className="me-auto">
-                <Nav.Link href="/newquestion">New question</Nav.Link>
+                <Nav.Link as={Link} to="/newquestion">New question</Nav.Link>
             </Nav>
             <Nav className="me-auto">
-                <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
+                <Nav.Link as={Link} to="/leaderboard">Leaderboard</Nav.Link>
             </Nav>
             {authedUser === null ? (
                 <Nav className="me-auto">
-                    <Nav.Link href="/login">Login</Nav.Link>
+                    <Nav.Link as={Link} to="/login">Login</Nav.Link>
                 </Nav>
             ) : (
                 <>
