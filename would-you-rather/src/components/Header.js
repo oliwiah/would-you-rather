@@ -13,33 +13,41 @@ export const Header = () => {
     return (
         <Navbar bg="light" variant="light">
             <Container>
-            <Navbar.Brand href="/">Would you rather...?</Navbar.Brand>
-            <Nav className="me-auto">
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-            </Nav>
-            <Nav className="me-auto">
-                <Nav.Link as={Link} to="/newquestion">New question</Nav.Link>
-            </Nav>
-            <Nav className="me-auto">
-                <Nav.Link as={Link} to="/leaderboard">Leaderboard</Nav.Link>
-            </Nav>
-            {authedUser === null ? (
+                <Navbar.Brand href="/">Would you rather...?</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                    <Nav.Link as={Link} to="/">
+                        Home
+                    </Nav.Link>
                 </Nav>
-            ) : (
-                <>
-                    <NavbarBrand>
-                        <img src={avatar} alt='Avatar' width='35'></img>
-                    </NavbarBrand>
-                    <Nav>Hello, {authedUser}!</Nav>
+                <Nav className="me-auto">
+                    <Nav.Link as={Link} to="/newquestion">
+                        New question
+                    </Nav.Link>
+                </Nav>
+                <Nav className="me-auto">
+                    <Nav.Link as={Link} to="/leaderboard">
+                        Leaderboard
+                    </Nav.Link>
+                </Nav>
+                {authedUser === null ? (
                     <Nav className="me-auto">
-                        <Nav.Link href="/logout" onClick={() => dispatch(resetAuthedUser())}>
-                            Logout
+                        <Nav.Link as={Link} to="/login">
+                            Login
                         </Nav.Link>
                     </Nav>
-                </>
-            )}
+                ) : (
+                    <>
+                        <NavbarBrand>
+                            <img src={avatar} alt="Avatar" width="35"></img>
+                        </NavbarBrand>
+                        <Nav className="me-auto" style={{ color: "rgba(0,0,0,.55)" }}>Hello, {authedUser}!</Nav>
+                        <Nav className="me-auto">
+                            <Nav.Link href="/logout" onClick={() => dispatch(resetAuthedUser())}>
+                                Logout
+                            </Nav.Link>
+                        </Nav>
+                    </>
+                )}
             </Container>
         </Navbar>
     );

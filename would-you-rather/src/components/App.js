@@ -10,7 +10,6 @@ import Questions from './Questions';
 import { Question } from './Question';
 import { Leaderboard } from './Leaderboard';
 import { NewQuestion } from './NewQuestion';
-import { Logout } from './Logout';
 import { NotFound } from './NotFound';
 
 const App = () => {
@@ -38,7 +37,6 @@ const App = () => {
                                 <Route path="/questions/:id" element={<Question />} />
                                 <Route path="/leaderboard" element={<Leaderboard />} />
                                 <Route path="/newquestion" element={<NewQuestion />} />
-                                <Route path="/logout" element={<Logout />} />
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                         )}
