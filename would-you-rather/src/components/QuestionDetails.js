@@ -19,7 +19,6 @@ const QuestionDetails = (props) => {
 
     const handleChange = (event) => {
         setAnswer(event.target.id);
-        console.log('handle change =====> ', answer);
     };
 
     const handleSubmit = (event) => {
