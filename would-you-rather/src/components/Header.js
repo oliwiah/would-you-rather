@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Nav, Navbar, Container, NavbarBrand } from 'react-bootstrap';
 import { resetAuthedUser } from '../actions/authedUser';
 
-export const Header = () => {
+const Header = () => {
     const dispatch = useDispatch();
     const authedUser = useSelector((state) => state.authedUser);
     const users = useSelector((state) => state.users);

@@ -6,7 +6,7 @@ import QuestionDetails from './QuestionDetails';
 import QuestionResult from './QuestionResult';
 import '../styles/questionCard.css';
 
-export const Question = (props) => {
+const Question = (props) => {
     const authedUser = useSelector((state) => state.authedUser);
     const user = useSelector((state) => state.users[authedUser]);
     const questions = useSelector((state) => state.questions);

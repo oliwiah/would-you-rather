@@ -5,12 +5,12 @@ import LoadingBar from 'react-redux-loading';
 
 import { handleInitialData } from '../actions/shared';
 import Login from './Login';
-import { Header } from './Header';
+import Header from './Header';
 import Questions from './Questions';
-import { Question } from './Question';
-import { Leaderboard } from './Leaderboard';
-import { NewQuestion } from './NewQuestion';
-import { NotFound } from './NotFound';
+import Question from './Question';
+import LeaderBoard from './LeaderBoard';
+import NewQuestion from './NewQuestion';
+import NotFound from './NotFound';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const App = () => {
                             <Routes>
                                 <Route path="/" exact element={<Questions />} />
                                 <Route path="/questions/:id" element={<Question />} />
-                                <Route path="/leaderboard" element={<Leaderboard />} />
+                                <Route path="/leaderboard" element={<LeaderBoard />} />
                                 <Route path="/newquestion" element={<NewQuestion />} />
                                 <Route path="*" element={<NotFound />} />
                             </Routes>

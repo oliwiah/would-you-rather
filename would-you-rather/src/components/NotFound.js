@@ -1,7 +1,9 @@
 import React from "react";
 
-export const NotFound = () => (
+const NotFound = () => (
     <header>
         <p>This is NotFound</p>
     </header>
 );
+
+export default NotFound;

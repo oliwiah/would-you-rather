@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardGroup, Button, FormGroup, Form } from 'react-bootstrap';
 import { handleAddQuestion } from '../actions/shared';
 
-export const NewQuestion = () => {
+const NewQuestion = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [optionOneText, setOptionOneText] = useState('');
@@ -54,3 +54,5 @@ export const NewQuestion = () => {
         </CardGroup>
     );
 };
+
+export default NewQuestion;
