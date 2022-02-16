@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card, CardGroup } from 'react-bootstrap';
 import { setAuthedUser } from '../actions/authedUser';
 
 const Login = (props) => {
@@ -23,28 +23,30 @@ const Login = (props) => {
     };
 
     return (
-        <div>
-            <h1>Welcome to the Would-you-rather app!</h1>
+        <CardGroup>
+            <Card>
+                <Card.Title>Welcome to the Would-you-rather app!</Card.Title>
 
-            <Form onSubmit={handleLogin}>
-                <Form.Group className="mb-3">
-                    <Form.Label htmlFor="login">Login to continue</Form.Label>
-                    <Form.Select size="lg" id="login" onChange={changeUser} value={selectedUser}>
-                        <option key="initialText" disabled>
-                            Choose user
-                        </option>
-                        {userIds.map((userId) => (
-                            <option key={userId} value={userId}>
-                                {users[userId].name}
+                <Form onSubmit={handleLogin}>
+                    <Form.Group className="mb-3">
+                        <Form.Label htmlFor="login">Login to continue</Form.Label>
+                        <Form.Select size="lg" id="login" onChange={changeUser} value={selectedUser}>
+                            <option key="initialText" disabled>
+                                Choose user
                             </option>
-                        ))}
-                    </Form.Select>
-                </Form.Group>
-                <Button type="submit" disabled={selectedUser === null}>
-                    Login
-                </Button>
-            </Form>
-        </div>
+                            {userIds.map((userId) => (
+                                <option key={userId} value={userId}>
+                                    {users[userId].name}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </Form.Group>
+                    <Button type="submit" disabled={selectedUser === null}>
+                        Login
+                    </Button>
+                </Form>
+            </Card>
+        </CardGroup>
     );
 };
 
