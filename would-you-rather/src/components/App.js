@@ -28,17 +28,19 @@ const App = () => {
             ) : (
                 <Router>
                     <React.Fragment>
-                        <Header />
                         {authedUser === null ? (
                             <Login />
                         ) : (
+                            <>
+                        <Header />
                             <Routes>
                                 <Route path="/" exact element={<Questions />} />
-                                <Route path="/questions/:id" element={<Question />} />
-                                <Route path="/leaderboard" element={<LeaderBoard />} />
-                                <Route path="/newquestion" element={<NewQuestion />} />
+                                <Route path="/questions/:id" exact element={<Question />} />
+                                <Route path="/leaderboard" exact element={<LeaderBoard />} />
+                                <Route path="/newquestion" exact element={<NewQuestion />} />
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
+                            </>
                         )}
                     </React.Fragment>
                 </Router>
