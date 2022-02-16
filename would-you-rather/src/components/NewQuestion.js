@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardGroup, Button, FormGroup, Form } from 'react-bootstrap';
-import { handleAddQuestion } from '../actions/shared';
+import { handleAddQuestion } from '../actions/shared'
 
 const NewQuestion = () => {
     const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const NewQuestion = () => {
                                 onClick={handleSubmit}
                                 disabled={optionOneText === '' || optionTwoText === ''}
                             >
-                                Vote
+                                Add
                             </Button>
                         </FormGroup>
                     </Card.Body>

@@ -6,7 +6,7 @@ import QuestionDetails from './QuestionDetails';
 import QuestionResult from './QuestionResult';
 import '../styles/questions.css';
 
-const Questions = (props) => {
+const Questions = () => {
     const authedUser = useSelector((state) => state.authedUser);
     const questions = useSelector((state) => state.questions);
     const [activeTab, setActiveTab] = useState('unanswered');

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 import { Card, CardGroup, Button, Image, Form } from 'react-bootstrap';
-import { handleUpdateQuestion } from '../actions/questions';
+import { handleAddQuestion } from '../actions/questions';
 import '../styles/questionCard.css';
 
 const QuestionDetails = (props) => {
@@ -14,7 +13,6 @@ const QuestionDetails = (props) => {
     const authedUser = useSelector((state) => state.authedUser);
     const [answer, setAnswer] = useState(null);
     const { author, optionOne, optionTwo } = question;
-
     const avatar = users[question.author].avatarURL;
 
     const handleChange = (event) => {
@@ -26,7 +24,7 @@ const QuestionDetails = (props) => {
         const { id } = props;
 
         dispatch(
-            handleUpdateQuestion({
+            handleAddQuestion({
                 authedUser,
                 qid: id,
                 answer,
