@@ -35,7 +35,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
         })
             .then((question) => {
                 dispatch(addQuestion(question));
-                dispatch(addUserQuestion(authedUser, question.id));
+                dispatch(addUserQuestion(question));
                 dispatch(hideLoading());
             })
             .catch(function (error) {
@@ -44,18 +44,18 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
     };
 }
 
-export function handleAnswerQuestion(authedUser, questionID, option) {
+export function handleAnswerQuestion(authedUser, qid, answer) {
     return (dispatch) => {
         dispatch(showLoading());
 
         return saveQuestionAnswer({
             authedUser,
-            qid: questionID,
-            answer: option,
+            qid,
+            answer,
         })
             .then(() => {
-                dispatch(answerQuestion(authedUser, questionID, option));
-                dispatch(addQuestionAnswer(authedUser, questionID, option));
+                dispatch(answerQuestion(authedUser, qid, answer));
+                dispatch(addQuestionAnswer(authedUser, qid, answer));
                 dispatch(hideLoading());
             })
             .catch(function (error) {

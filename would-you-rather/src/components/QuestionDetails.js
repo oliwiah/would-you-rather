@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardGroup, Button, Image, Form } from 'react-bootstrap';
-import { handleAddQuestion } from '../actions/questions';
+import { handleAnswerQuestion } from '../actions/shared';
 import '../styles/questionCard.css';
 
 const QuestionDetails = (props) => {
@@ -24,7 +24,7 @@ const QuestionDetails = (props) => {
         const { id } = props;
 
         dispatch(
-            handleAddQuestion({
+            handleAnswerQuestion({
                 authedUser,
                 qid: id,
                 answer,
