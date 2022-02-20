@@ -39,7 +39,7 @@ const QuestionDetails = (props) => {
     return (
         <CardGroup>
             <Card>
-                <Card.Title style={{ fontSize: '1.5em' }}>{author} asks:</Card.Title>
+                <Card.Title style={{ fontSize: '1.5em' }}>{users[author].name} asks:</Card.Title>
                 <div className="user-card">
                     <Image variant="top" roundedCircle="true" src={avatar} />
                     <Card.Body>

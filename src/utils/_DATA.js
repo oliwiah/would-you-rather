@@ -5,7 +5,7 @@ import rabbit from '../icons/rabbit.png';
 let users = {
     frog: {
         id: 'frog',
-        name: 'Mrs Frog',
+        name: 'Frog',
         avatarURL: frog,
         answers: {
             '8xf0y6ziyjabvozdd253nd': 'optionOne',
@@ -17,7 +17,7 @@ let users = {
     },
     pinguin: {
         id: 'pinguin',
-        name: 'Mr Pinguin',
+        name: 'Pinguin',
         avatarURL: pinguin,
         answers: {
             vthrdm985a262al8qx3do: 'optionOne',
@@ -27,7 +27,7 @@ let users = {
     },
     rabbit: {
         id: 'rabbit',
-        name: 'Mr Rabbit',
+        name: 'Rabbit',
         avatarURL: rabbit,
         answers: {
             xj352vofupe1dqz9emx13r: 'optionOne',
