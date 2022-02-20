@@ -24,13 +24,13 @@ const QuestionDetails = (props) => {
         const { id } = props;
 
         dispatch(
-            handleAnswerQuestion({
+            handleAnswerQuestion(
                 authedUser,
-                qid: id,
+                id,
                 answer,
-            })
+            )
         );
-        navigate(`/questions/${props.id}`);
+        navigate(`/questions/${id}`);
     };
 
     if (props === null) {

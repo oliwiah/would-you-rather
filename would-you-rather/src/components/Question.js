@@ -6,7 +6,7 @@ import QuestionDetails from './QuestionDetails';
 import QuestionResult from './QuestionResult';
 import '../styles/questionCard.css';
 
-const Question = (props) => {
+const Question = () => {
     const authedUser = useSelector((state) => state.authedUser);
     const user = useSelector((state) => state.users[authedUser]);
     const questions = useSelector((state) => state.questions);
@@ -15,7 +15,7 @@ const Question = (props) => {
 
     if (!questions[id]) {
         return <Navigate to="/404" />;
-    } else if (!answered) {
+    } else if (answered) {
         return <QuestionResult id={id} />;
     } else {
         return <QuestionDetails id={id} />;

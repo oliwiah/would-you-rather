@@ -16,11 +16,11 @@ export function addUserQuestion(question) {
     };
 }
 
-export function answerQuestion(authedUser, questionID, option) {
+export function answerQuestion(authedUser, qid, answer) {
     return {
         type: ANSWER_QUESTION,
         authedUser,
-        questionID,
-        option,
+        qid,
+        answer,
     };
 }
