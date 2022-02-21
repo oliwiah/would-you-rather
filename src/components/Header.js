@@ -20,7 +20,7 @@ const Header = () => {
                     </Nav.Link>
                 </Nav>
                 <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/newquestion">
+                    <Nav.Link as={Link} to="/add">
                         New question
                     </Nav.Link>
                 </Nav>

@@ -37,7 +37,7 @@ const App = () => {
                                 <Route path="/" exact element={<Questions />} />
                                 <Route path="/questions/:id" exact element={<Question />} />
                                 <Route path="/leaderboard" exact element={<LeaderBoard />} />
-                                <Route path="/newquestion" exact element={<NewQuestion />} />
+                                <Route path="/add" exact element={<NewQuestion />} />
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                             </>
