@@ -9,7 +9,7 @@ Once you log out, you will be able to log in as a different user. There are a fe
 
 ## Demo
 
-![Demo of Would you rather app](src/icons/would-you-rather.mov)
+![Demo of Would you rather app](src/icons/would-you-rather.gif)
 
 ## Technologies used
 
