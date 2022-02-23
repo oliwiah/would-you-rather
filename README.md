@@ -23,3 +23,5 @@ Clone the project and run
 ```
 yarn install && yarn start
 ```
+*Note: Make sure you use node v. 14<br />
+(I checked that v.14.17.0 and 14.19.0 work for sure).*
