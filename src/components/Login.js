@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button, Card, CardGroup } from 'react-bootstrap';
 import { setAuthedUser } from '../actions/authedUser';
 
-const Login = (props) => {
+const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const users = useSelector((state) => state.users);
@@ -19,7 +19,7 @@ const Login = (props) => {
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(setAuthedUser(selectedUser));
-        navigate('/');
+        navigate(-1);
     };
 
     return (

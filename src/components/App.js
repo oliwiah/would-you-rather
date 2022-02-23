@@ -32,14 +32,14 @@ const App = () => {
                             <Login />
                         ) : (
                             <>
-                        <Header />
-                            <Routes>
-                                <Route path="/" exact element={<Questions />} />
-                                <Route path="/questions/:id" exact element={<Question />} />
-                                <Route path="/leaderboard" exact element={<LeaderBoard />} />
-                                <Route path="/add" exact element={<NewQuestion />} />
-                                <Route path="*" element={<NotFound />} />
-                            </Routes>
+                                <Header />
+                                <Routes>
+                                    <Route path="/" exact element={<Questions />} />
+                                    <Route path="/questions/:id" exact element={<Question />} />
+                                    <Route path="/leaderboard" exact element={<LeaderBoard />} />
+                                    <Route path="/add" exact element={<NewQuestion />} />
+                                    <Route path="*" element={<NotFound />} />
+                                </Routes>
                             </>
                         )}
                     </React.Fragment>
