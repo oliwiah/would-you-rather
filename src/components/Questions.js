@@ -40,25 +40,31 @@ const Questions = () => {
 
             {activeTab === 'unanswered' ? (
                 <div>
-                    {unansweredQuestions
-                        .map((question) => {
+                    {unansweredQuestions.length === 0 ? (
+                        <p>No more questions to answer</p>
+                    ) : (
+                        unansweredQuestions.map((question) => {
                             return (
                                 <div className="box" key={question.id}>
                                     <QuestionDetails id={question.id} />
                                 </div>
                             );
-                        })}
+                        })
+                    )}
                 </div>
             ) : (
                 <div>
-                    {answeredQuestions
-                        .map((question) => {
+                    {answeredQuestions.length === 0 ? (
+                        <p>No answered questions yet</p>
+                    ) : (
+                        answeredQuestions.map((question) => {
                             return (
                                 <div className="box" key={question.id}>
                                     <QuestionResult id={question.id} />
                                 </div>
                             );
-                        })}
+                        })
+                    )}
                 </div>
             )}
         </div>
