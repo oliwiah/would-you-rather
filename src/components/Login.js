@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { Form, Button, Card, CardGroup } from 'react-bootstrap';
 import { setAuthedUser } from '../actions/authedUser';
 
 const Login = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const users = useSelector((state) => state.users);
     const userIds = Object.keys(users);
     const [selectedUser, setSelectedUser] = useState(userIds[0]);
@@ -19,7 +17,6 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         dispatch(setAuthedUser(selectedUser));
-        navigate(-1);
     };
 
     return (
